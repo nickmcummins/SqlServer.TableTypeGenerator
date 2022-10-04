@@ -1,0 +1,1 @@
+# dotnet-msssql-tabletype-generator
