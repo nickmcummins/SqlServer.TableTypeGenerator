@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <TaskFolder Condition="'$(MSBuildRuntimeType)' == 'Core'">netstandard2.0</TaskFolder>
+        <TaskFolder Condition="'$(MSBuildRuntimeType)' != 'Core'">net472</TaskFolder>
+        <TaskAssembly>$(TaskFolder)\$(MSBuildThisFileName).dll</TaskAssembly>
+    </PropertyGroup>
+
+    <UsingTask TaskName="$(MSBuildThisFileName).GenerateTableTypes" AssemblyFile="$(TaskAssembly)"/>
+</Project>
