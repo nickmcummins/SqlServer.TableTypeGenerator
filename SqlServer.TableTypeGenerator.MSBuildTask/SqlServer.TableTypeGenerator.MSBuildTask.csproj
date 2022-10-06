@@ -1,36 +1,57 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Project Sdk="Microsoft.NET.Sdk">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup Label="ProjectProperties">
+        <TargetFrameworks>netstandard2.0;net462;net472</TargetFrameworks>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{727DE834-1D89-4124-8FE3-CFEC2F0BDC1B}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>SqlServer.TableTypeGenerator.MSBuildTask</RootNamespace>
+        <AssemblyName>SqlServer.TableTypeGenerator.MSBuildTask</AssemblyName>
+        <FileAlignment>512</FileAlignment>
+        <Deterministic>true</Deterministic>
+        <IsPackable>true</IsPackable>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <Version>0.0.1</Version>
+        <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+        <BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
+        <NoWarn>NU5100</NoWarn>
+        <GenerateDependencyFile>true</GenerateDependencyFile>
+        <RepositoryUrl>https://github.com/nickmcummins/SqlServer.TableTypeGenerator</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+    </PropertyGroup>
 
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net472</TargetFrameworks>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{727DE834-1D89-4124-8FE3-CFEC2F0BDC1B}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SqlServer.TableTypeGenerator.MSBuildTask</RootNamespace>
-    <AssemblyName>SqlServer.TableTypeGenerator.MSBuildTask</AssemblyName>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <IsPackable>true</IsPackable>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-
-  </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SqlServer.TableTypeGenerator\SqlServer.TableTypeGenerator.csproj">
-      <Project>{e1ccc439-0b38-4926-8bde-680d89ea7cd4}</Project>
-      <Name>SqlServer.TableTypeGenerator</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Build.Utilities.Core">
-      <Version>17.3.1</Version>
-      <PrivateAssets>All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection">
-      <Version>7.0.0-rc.1.22426.10</Version>
-      <PrivateAssets>All</PrivateAssets>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+    <ItemGroup Label="ProjectReferences">
+        <ProjectReference Include="..\SqlServer.TableTypeGenerator\SqlServer.TableTypeGenerator.csproj">
+            <Project>{e1ccc439-0b38-4926-8bde-680d89ea7cd4}</Project>
+            <Name>SqlServer.TableTypeGenerator</Name>
+            <PrivateAssets>All</PrivateAssets>
+            <IncludeAssets>All</IncludeAssets>
+        </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Build.Utilities.Core">
+            <Version>17.3.1</Version>
+            <PrivateAssets>All</PrivateAssets>
+            <ExcludeAssets>Runtime</ExcludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection">
+            <Version>7.0.0-rc.1.22426.10</Version>
+            <PrivateAssets>All</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+    <ItemGroup>
+      <Content Remove="build\SqlServer.TableTypeGenerator.MSBuildTask.props" />
+    </ItemGroup>
+    
+    <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
+        <ItemGroup>
+            <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths)" TargetPath="%(ReferenceCopyLocalPaths.DestinationSubPath)" />
+        </ItemGroup>
+    </Target>
+    <Target Name="AddBuildDependencyFileToBuiltProjectOutputGroupOutput" BeforeTargets="BuiltProjectOutputGroup" Condition=" '$(GenerateDependencyFile)' == 'true'">
+        <ItemGroup>
+            <BuiltProjectOutputGroupOutput Include="$(ProjectDepsFilePath)" TargetPath="$(ProjectDepsFileName)" FinalOutputPath="$(ProjectDepsFilePath)" />
+        </ItemGroup>
+    </Target>
 </Project>
