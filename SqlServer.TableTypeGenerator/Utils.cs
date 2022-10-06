@@ -1,6 +1,10 @@
-﻿using static DotNet.GenerateTableTypes.Constants;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using static SqlServer.TableTypeGenerator.Constants;
 
-namespace DotNet.GenerateTableTypes
+namespace SqlServer.TableTypeGenerator
 {
     public static class Utils
     {
@@ -19,7 +23,7 @@ namespace DotNet.GenerateTableTypes
 
     public static class Extensions
     {
-        public static string ToString<T>(this IEnumerable<T> collection)
+        public static string ToString<T>(this IEnumerable<T> collection) where T : notnull
         {
             return $"[{string.Join(Comma, collection.Select(item => item.ToString()))}]";
         }
@@ -48,6 +52,35 @@ namespace DotNet.GenerateTableTypes
             leaves.Add(t);
             return leaves;
         }
+
+        public static bool MatchesAnyPattern(this string s, IEnumerable<string> patternStrs)
+        {
+            if (patternStrs == null)
+            {
+                return true;
+            }
+
+            foreach (var patternStr in patternStrs)
+            {
+                bool matches;
+                if (patternStr.EndsWith("*"))
+                {
+                    matches = s.StartsWith(patternStr.Replace("*", ""));
+                }
+                else
+                {
+                    matches = s == patternStr;
+                }
+
+                if (matches) return true;
+            }
+            return false;
+        }
+
+        public static string TruncateAtSubsting(this string str, string substring)
+        {
+            return str.Substring(0, str.IndexOf(substring));
+        }
     }
 
     public static class Constants
@@ -55,5 +88,6 @@ namespace DotNet.GenerateTableTypes
         public const string Tab = "\t";
         public const string Comma = ",";
         public const string NewLine = "\n";
+        public const string Space = " ";
     }
 }

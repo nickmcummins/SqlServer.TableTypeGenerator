@@ -1,3 +1,4 @@
 .vs/
 bin/
 obj/
+SqlServer.TableTypeGenerator.CommandLine/Properties/launchSettings.json

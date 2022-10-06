@@ -1,9 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>DotNet.GenerateTableTypes</RootNamespace>
+    <TargetFrameworks>net6.0</TargetFrameworks>
+    <RootNamespace>SqlServer.TableTypeGenerator.CommandLine</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackAsTool>true</PackAsTool>
@@ -14,16 +13,12 @@
     <PackageProjectUrl>https://github.com/nickmcummins/sqlserver-tabletype-generator</PackageProjectUrl>
     <Authors>Nick M Cummins</Authors>
     <Version>0.0.1</Version>
+    <LangVersion>10.0</LangVersion>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
   </ItemGroup>
-
   <ItemGroup>
-    <Reference Include="Microsoft.SqlServer.Management.SqlParser">
-      <HintPath>C:\Program Files\Microsoft Visual Studio\2022\Preview\Common7\IDE\Extensions\Microsoft\SQLCommon\150\Microsoft.SqlServer.Management.SqlParser.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\SqlServer.TableTypeGenerator\SqlServer.TableTypeGenerator.csproj" />
   </ItemGroup>
-
 </Project>
