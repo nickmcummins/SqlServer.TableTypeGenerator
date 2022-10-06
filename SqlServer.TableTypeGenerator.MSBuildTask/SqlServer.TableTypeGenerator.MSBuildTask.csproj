@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net472</TargetFrameworks>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{727DE834-1D89-4124-8FE3-CFEC2F0BDC1B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SqlServer.TableTypeGenerator.MSBuildTask</RootNamespace>
+    <AssemblyName>SqlServer.TableTypeGenerator.MSBuildTask</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SqlServer.TableTypeGenerator\SqlServer.TableTypeGenerator.csproj">
+      <Project>{e1ccc439-0b38-4926-8bde-680d89ea7cd4}</Project>
+      <Name>SqlServer.TableTypeGenerator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Utilities.Core">
+      <Version>17.3.1</Version>
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection">
+      <Version>7.0.0-rc.1.22426.10</Version>
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+</Project>
