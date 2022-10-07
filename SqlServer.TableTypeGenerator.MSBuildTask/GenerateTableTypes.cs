@@ -3,9 +3,9 @@ using SqlServer.TableTypeGenerator;
 using System.Linq;
 using Task = Microsoft.Build.Utilities.Task;
 
-namespace SqlSerrver.TableTypeGenerator.MSBuildTask
+namespace SqlServer.TableTypeGenerator.MSBuildTask
 {
-    public class TableTypeGeneratorTask : Task
+    public class GenerateTableTypes : Task
     {
         public string TablesFilter { get; set; }
 

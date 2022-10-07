@@ -6,5 +6,4 @@
         <TaskAssembly>$(TaskFolder)\$(MSBuildThisFileName).dll</TaskAssembly>
     </PropertyGroup>
 
-    <UsingTask TaskName="$(MSBuildThisFileName).GenerateTableTypes" AssemblyFile="$(TaskAssembly)"/>
 </Project>

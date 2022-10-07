@@ -12,7 +12,7 @@
         <Deterministic>true</Deterministic>
         <IsPackable>true</IsPackable>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-        <Version>0.0.1-effe67d</Version>
+        <Version>0.0.1</Version>
         <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
         <BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
         <NoWarn>NU5100</NoWarn>
