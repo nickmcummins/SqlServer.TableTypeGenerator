@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServer.TableTypeGenerato
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServer.TableTypeGenerator.CommandLine", "SqlServer.TableTypeGenerator.CommandLine\SqlServer.TableTypeGenerator.CommandLine.csproj", "{83CFE472-B0E4-483B-8D99-2631F0FAE4C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.EnumToTableValuedFunction", "SqlServer.EnumToTableValuedFunction\SqlServer.EnumToTableValuedFunction.csproj", "{BA77C5D1-948A-4BD2-9D37-026ADE1291FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{83CFE472-B0E4-483B-8D99-2631F0FAE4C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83CFE472-B0E4-483B-8D99-2631F0FAE4C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83CFE472-B0E4-483B-8D99-2631F0FAE4C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA77C5D1-948A-4BD2-9D37-026ADE1291FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA77C5D1-948A-4BD2-9D37-026ADE1291FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA77C5D1-948A-4BD2-9D37-026ADE1291FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA77C5D1-948A-4BD2-9D37-026ADE1291FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
 ﻿using SqlServer.TableTypeGenerator;
+using System.Collections.Immutable;
 using System.CommandLine;
 
 var command = new RootCommand("Generate SQL Server table types from table definitions.");
@@ -15,12 +16,11 @@ command.Add(addFromTableOptions);
 command.Add(renamedTypesOption);
 command.SetHandler((tablesDir, tablesFilter, addColumnToTables, addFromTables, renamedTypesStr) => 
 {
-    var additionalColumnsByType = addColumnToTables
-        .ToDictionary(t => t.Split('=')[0], t => t.Split('=')[1].Split(','));
+    IDictionary<string, string[]> additionalColumnsByType = addColumnToTables.Any() ? addColumnToTables.ToDictionary(t => t.Split('=')[0], t => t.Split('=')[1].Split(',')) : ImmutableDictionary.CreateRange<string, string[]>(Enumerable.Empty<KeyValuePair<string, string[]>>());
 
     var addFromTablesByType = addFromTables.ToDictionary(t => t.Split('=')[0], t => t.Split('=')[1].Split(','));
     var tables = tablesFilter.Split(',').ToList();
-    var renamedTypes = renamedTypesStr.Split(',').ToDictionary(rn => rn.Split('=')[0], rn => rn.Split('=')[1]);
+    IDictionary<string, string> renamedTypes = renamedTypesStr.Length > 0 ? renamedTypesStr.Split(',').ToDictionary(rn => rn.Split('=')[0], rn => rn.Split('=')[1]) : ImmutableDictionary.CreateRange<string, string>(Enumerable.Empty<KeyValuePair<string, string>>());
     var ttGenerator = new TableTypesGenerator(tablesDir, new TableTypeGenerationOptions(tables, additionalColumnsByType, addFromTablesByType, renamedTypes));
     ttGenerator.WriteFiles();
 }, typesDirArgument, tablesFilterOption, addColumnToTableOptions, addFromTableOptions, renamedTypesOption);
