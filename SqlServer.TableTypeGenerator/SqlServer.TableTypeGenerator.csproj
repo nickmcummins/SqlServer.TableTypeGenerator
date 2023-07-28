@@ -4,10 +4,18 @@
     <TargetFrameworks>netstandard2.0;net462;net472</TargetFrameworks>
     <Nullable>enable</Nullable>
     <LangVersion>9.0</LangVersion>
+    <Company></Company>
+    <Description>Library for generating SQL Server table types from table definitions.</Description>
+    <Version>0.0.1</Version>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/nickmcummins/SqlServer.TableTypeGenerator.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Title>SqlServer.TableTypeGenerator</Title>
+    <Authors>Nick M Cummins</Authors>
+    <Product>SqlServer.TableTypeGenerator</Product>
+    <PackageOutputPath>$(SolutionDir)\NuGetPackages</PackageOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.SqlServer.Management.SqlParser">
-      <HintPath>C:\Program Files\Microsoft Visual Studio\2022\Preview\Common7\IDE\Extensions\Microsoft\SQLCommon\150\Microsoft.SqlServer.Management.SqlParser.dll</HintPath>
-    </Reference>
+	<PackageReference Include="Microsoft.SqlServer.Management.SqlParser" Version="160.22515.0" />
   </ItemGroup>
 </Project>
