@@ -29,8 +29,6 @@
         <ProjectReference Include="..\SqlServer.TableTypeGenerator\SqlServer.TableTypeGenerator.csproj">
             <Project>{e1ccc439-0b38-4926-8bde-680d89ea7cd4}</Project>
             <Name>SqlServer.TableTypeGenerator</Name>
-            <PrivateAssets>All</PrivateAssets>
-            <IncludeAssets>All</IncludeAssets>
         </ProjectReference>
     </ItemGroup>
     
